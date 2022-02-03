@@ -27,16 +27,14 @@ class ContactList {
                             <td>${item.phone}</td>
                             <td>${item.gender}</td>
                             <td>${item.nationality}</td>
-                            <td><button class="delete bg-danger border-none">Delete</button></td>
+                            <td><button class="delete btn btn-danger border-none">Delete</button></td>
                         `
             tBody.appendChild(TR);
             TR.addEventListener('click', Remove)
         });
 
     }
-    numberOfContacts() {
-        return this.list.length
-    }
+
 
     delete(name) {
 
@@ -100,15 +98,8 @@ function submit(e) {
     }
 
     let newContact = new Contact(fName.value, lName.value, email.value, phone.value, nationality.value, displayRadioValue())
-        //localStorage.setItem((fName.value + " " + lName.value), JSON.stringify(newContact))
     contactList.add(newContact)
     contactList.refresh()
-        //console.log(contactList)
-
-
-
-
-
 
 }
 
@@ -120,9 +111,8 @@ function displayRadioValue() {
 }
 
 function Remove(e) {
-    // console.log(e.target.parentNode.parentNode.children[1].innerText)
+
     contactList.delete(e.target.parentNode.parentNode.children[1].innerText)
-    console.log(contactList)
 
     if (e.target.classList.contains('delete')) {
         e.target.parentNode.parentNode.remove();
